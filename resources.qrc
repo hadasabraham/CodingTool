@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="images">
+    <file>note5.png</file>
+    <file>info2.png</file>
+    <file>note4.png</file>
+  </qresource>
+</RCC>
