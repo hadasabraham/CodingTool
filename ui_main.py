@@ -437,7 +437,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.strands_data_length.setText(QCoreApplication.translate("MainWindow", u"Strands data length", None))
 #if QT_CONFIG(tooltip)
-        self.b_force.setToolTip(QCoreApplication.translate("MainWindow", u"denoting whether we're using brute force manner in the encoding algorithim", None))
+        self.b_force.setToolTip(QCoreApplication.translate("MainWindow", u"denoting whether we're using brute force manner in the encoding algorithm", None))
 #endif // QT_CONFIG(tooltip)
         self.b_force.setText(QCoreApplication.translate("MainWindow", u"Is brute force", None))
 #if QT_CONFIG(tooltip)
