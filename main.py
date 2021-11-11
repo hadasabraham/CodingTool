@@ -114,7 +114,14 @@ class MainWindow(QMainWindow):
         return c <= n
 
     def input_validation_encode_SVTC(self):
-        if not self.input_validation_SVTC():
+        redundancy = ceil(log2(self.ui.p_spin_box.value())) + 1
+        word_encode = self.ui.shifted_text_encode.toPlainText().strip()
+        lst_word_encode = list(word_encode)
+        lst_word_encode = [int(i) for i in lst_word_encode]
+        if len(lst_word_encode) != self.ui.n_spin_box.value() - redundancy:
+            self.error_msg.setText("Invalid vector length! cannot map to a legal codeword")
+            self.error_msg.exec_()
+        elif not self.input_validation_SVTC():
             self.error_msg.setText("c must be smaller than n+1")
             self.error_msg.exec_()
         else:
