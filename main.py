@@ -1,17 +1,22 @@
 import os
 import sys
 import platform
-from math import ceil, log2
+from math import ceil, log2, log
+from typing import List
 
 from PyQt5.QtWidgets import QMessageBox
 from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect,
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject,
+                            QObject, QPoint, QRect,
                             QSize, QTime, QUrl, Qt, QEvent, QProcess)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence,
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon,
+                           QKeySequence,
                            QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
 ## ==> SPLASH SCREEN
+from algorithems.decoder import Decoder
+from algorithems.encoder import Encoder
 from ui_splash_screen import Ui_SplashScreen
 
 ## ==> MAIN WINDOW
@@ -40,6 +45,8 @@ class MainWindow(QMainWindow):
         self.ui.shifted_text_decode.clear()
         self.ui.knuth_text_encode.clear()
         self.ui.knuth_text_decode.clear()
+        self.ui.repeat_text_encode.clear()
+        self.ui.repeat_text_decode.clear()
         # connect push buttons to an event
         self.ui.browse_button.clicked.connect(self.openFileDialog)
         self.ui.encode_button.clicked.connect(self.input_validation_CCC)
@@ -47,6 +54,23 @@ class MainWindow(QMainWindow):
         self.ui.balanced_decode_button.clicked.connect(self.input_validation_decode_BCK)
         self.ui.shifted_encode_button.clicked.connect(self.input_validation_encode_SVTC)
         self.ui.shifted_decode_button.clicked.connect(self.input_validation_decode_SVTC)
+        self.ui.repeat_encode_button.clicked.connect(self.input_validation_encode_RFC)
+        self.ui.repeat_decode_button.clicked.connect(self.input_validation_decode_RFC)
+
+        self.text_to_extract_file = ""
+        self.name_of_file_to_extract = ""
+        self.ui.bck_to_file_button.clicked.connect(
+            self.extract_to_file)
+        self.ui.bck_to_file_button_2.clicked.connect(
+            self.extract_to_file)
+        self.ui.SVTC_to_file_button.clicked.connect(
+            self.extract_to_file)
+        self.ui.SVTC_to_file_button_2.clicked.connect(
+            self.extract_to_file)
+        self.ui.repeat_to_file_button.clicked.connect(
+            self.extract_to_file)
+        self.ui.repeat_to_file_button_2.clicked.connect(
+            self.extract_to_file)
 
     def input_validation_CCC(self):
         raw = self.ui.raw_box.value()
@@ -57,6 +81,11 @@ class MainWindow(QMainWindow):
         b_force = self.ui.b_force_box.currentText()
         b_force_real = 'true' if b_force == 'Yes' else 'false'
         test_path = self.ui.browse_line_edit.text()
+        if test_path == "":
+            self.error_msg.setText(
+                "please insert input for the algorithm")
+            self.error_msg.exec_()
+            return
         process_path = "algorithems/clustering-correcting-codes-master/main.exe"
         e = -1
         t = raw * 4 + 1
@@ -74,7 +103,8 @@ class MainWindow(QMainWindow):
                     e = i
                     break
             else:
-                if strands_data_len < index_length + 1 + delta_1_size + delta_2_size + t * ceil(log2(count)):
+                if strands_data_len < index_length + 1 + delta_1_size + delta_2_size + t * ceil(
+                        log2(count)):
                     pass
                 else:
                     e = i
@@ -85,26 +115,38 @@ class MainWindow(QMainWindow):
             self.error_msg.exec_()
             self.ui.browse_line_edit.clear()
         elif e == -1:
-            self.error_msg.setText("the given strands data length is not holding the encoding constraints")
+            self.error_msg.setText(
+                "the given strands data length is not holding the encoding constraints")
             self.error_msg.exec_()
         else:
             self.runCCCencode()
 
     def input_validation_encode_BCK(self):
         vec_orig = self.ui.knuth_text_encode.toPlainText().strip()
+        if vec_orig == "":
+            self.error_msg.setText(
+                "please insert input for the algorithm")
+            self.error_msg.exec_()
+            return
         sigma_len = self.ui.sigma_len_box.value()
         if len(vec_orig) % sigma_len:
-            self.error_msg.setText("word length is not modolo 0 of sigma length")
+            self.error_msg.setText("word length is not modulo 0 of sigma length")
             self.error_msg.exec_()
         else:
             self.runBCKencode()
 
     def input_validation_decode_BCK(self):
         vec_decode = self.ui.knuth_text_decode.toPlainText().strip()
+        if vec_decode == "":
+            self.error_msg.setText(
+                "please insert input for the algorithm")
+            self.error_msg.exec_()
+            return
         sigma_len = self.ui.sigma_len_box_2.value()
         if len(vec_decode) % sigma_len:
-            self.error_msg.setText("word length is not modolo 0 of sigma length")
+            self.error_msg.setText("word length is not modulo 0 of sigma length")
             self.error_msg.exec_()
+            return
         else:
             self.runBCKdecode()
 
@@ -114,8 +156,13 @@ class MainWindow(QMainWindow):
         return c <= n
 
     def input_validation_encode_SVTC(self):
-        redundancy = ceil(log2(self.ui.p_spin_box.value())) + 1
         word_encode = self.ui.shifted_text_encode.toPlainText().strip()
+        if word_encode == "":
+            self.error_msg.setText(
+                "please insert input for the algorithm")
+            self.error_msg.exec_()
+            return
+        redundancy = ceil(log2(self.ui.p_spin_box.value())) + 1
         lst_word_encode = list(word_encode)
         lst_word_encode = [int(i) for i in lst_word_encode]
         if len(lst_word_encode) != self.ui.n_spin_box.value() - redundancy:
@@ -128,14 +175,42 @@ class MainWindow(QMainWindow):
             self.runSVTCencode()
 
     def input_validation_decode_SVTC(self):
+        word_decode = self.ui.shifted_text_decode.toPlainText().strip()
+        if word_decode == "":
+            self.error_msg.setText(
+                "please insert input for the algorithm")
+            self.error_msg.exec_()
+            return
         if not self.input_validation_SVTC():
             self.error_msg.setText("c must be smaller than n+1")
             self.error_msg.exec_()
+            return
         else:
             self.runSVTCdecode()
 
+    def input_validation_encode_RFC(self):
+        vec_orig = self.ui.repeat_text_encode.toPlainText().strip()
+        if vec_orig == "":
+            self.error_msg.setText(
+                "please insert input for the algorithm")
+            self.error_msg.exec_()
+            return
+        else:
+            self.runRFCencode()
+
+    def input_validation_decode_RFC(self):
+        vec_decode = self.ui.repeat_text_decode.toPlainText().strip()
+        if vec_decode == "":
+            self.error_msg.setText(
+                "please insert input for the algorithm")
+            self.error_msg.exec_()
+            return
+        else:
+            self.runRFCdecode()
+
     def openFileDialog(self):
-        self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
+        self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './',
+                                                           filter="*.txt")
         self.ui.browse_line_edit.setText(self.inputDNAPath)
 
     def runBCKencode(self):
@@ -144,6 +219,8 @@ class MainWindow(QMainWindow):
         decode_vec = encode_knuth(vec_orig, sigma_len)
         len_vec_orig = len(vec_orig)
         len_vec_decode = len(decode_vec)
+        self.text_to_extract_file = str(decode_vec)
+        self.name_of_file_to_extract = "bck_encode_output"
         self.ui.knuth_text_encode_2.setPlainText(decode_vec)
         self.ui.len_encoded_word.setText('Length Encoded word: ' + str(len_vec_orig))
         self.ui.len_decoded_word.setText('Length Decoded word: ' + str(len_vec_decode))
@@ -153,6 +230,8 @@ class MainWindow(QMainWindow):
         sigma_len = self.ui.sigma_len_box_2.value()
         len_vec_orig = self.ui.encode_word_box.value()
         encode_vec = decode_knuth(vec_decode, sigma_len, len_vec_orig)
+        self.text_to_extract_file = str(encode_vec)
+        self.name_of_file_to_extract = "bck_decode_output"
         self.ui.knuth_text_decode_2.setPlainText(encode_vec)
 
     def runSVTCencode(self):
@@ -166,6 +245,8 @@ class MainWindow(QMainWindow):
         svtc_obj = ShiftedVTCode(n, c, d, p)
         lst_word_decode = svtc_obj.encode(lst_word_encode)
         lst_word_decode = [str(i) for i in lst_word_decode]
+        self.text_to_extract_file = str(''.join(lst_word_decode))
+        self.name_of_file_to_extract = "svtc_encode_output"
         self.ui.shifted_text_encode_2.setPlainText(''.join(lst_word_decode))
 
     def runSVTCdecode(self):
@@ -186,6 +267,8 @@ class MainWindow(QMainWindow):
         else:
             lst_word_encode = svtc_obj.decode(lst_word_decode)
         lst_word_encode = [str(i) for i in lst_word_encode]
+        self.text_to_extract_file = str(''.join(lst_word_encode))
+        self.name_of_file_to_extract = "svtc_decode_output"
         self.ui.shifted_text_decode_2.setPlainText(''.join(lst_word_encode))
 
     def runCCCencode(self):
@@ -199,17 +282,75 @@ class MainWindow(QMainWindow):
         test_path = self.ui.browse_line_edit.text()
         process_path = "algorithems/clustering-correcting-codes-master/main.exe"
         arguments = [str(raw), str(tao), str(strands_data_len), assumption, b_force_real, test_path]
-        # print(process_path)
-        # print(arguments)
-        # self.progressBar.setVisible(True)
-        # self.label_progress.setText('Running reconstruction, please wait!')
         self.process = QProcess()
         self.process.setWorkingDirectory('.')
         self.process.start(process_path, arguments)
-        # self.process.readyRead.connect(self.dataReady)
-        # self.process.finished.connect(self.reconstruction_finished)
 
 
+    def run_action(self, w: List, q, action, redundancy, complexity_mode, verbose_mode,
+                   test_mode, comma_mode):
+        n = len(w) + redundancy if action == "encode" else len(w)
+        orig_w = w.copy()
+        log_n = ceil(log(n, q))
+        k = 2 * log_n + 2
+        file_to_print = self.ui.repeat_text_encode_2 if action == "encode" \
+            else self.ui.repeat_text_decode_2
+        res_word, text_to_print = Encoder(complexity_mode, redundancy, verbose_mode, q).input(
+            w).encode().output() if \
+            action == "encode" else Decoder(redundancy, verbose_mode, q).input(w).decode().output()
+        if verbose_mode:
+            file_to_print.setPlainText(f'n      ={n}\n'
+                                       f'q      ={q}\n'
+                                       f'log_n  ={log_n}\n'
+                                       f'k      ={k}\n'
+                                       f'w      ={w}\n'
+                                       f'{text_to_print}'
+                                       f'output ={"".join(map(str, res_word))}')
+            self.text_to_extract_file = f'n      ={n}\n'\
+                                        f'q      ={q}\n'\
+                                        f'log_n  ={log_n}\n'\
+                                        f'k      ={k}\n'\
+                                        f'w      ={w}\n'\
+                                        f'{text_to_print}'\
+                                        f'output ={"".join(map(str, res_word))}'
+
+        else:
+            file_to_print.setPlainText(f'output ={"".join(map(str, res_word))}')
+            self.text_to_extract_file = f'output ={"".join(map(str, res_word))}'
+
+    def runRFCencode(self):
+        action = 'encode'
+        r = self.ui.nrb_assumptionbox.currentText()
+        q = self.ui.ab_spinbox.value()
+        t = self.ui.imp_assumptionbox.currentText()
+        v = self.ui.log_assumptionbox.currentText()
+        v = False if v == 'no' else True
+        vec_orig = self.ui.repeat_text_encode.toPlainText().strip()
+        sequence = [int(x) for x in list(vec_orig)]
+        self.run_action(sequence, int(q), action, int(r), t, v, test_mode=False, comma_mode=(q > 2))
+        self.name_of_file_to_extract = "rfc_encode_output"
+
+    def runRFCdecode(self):
+        action = 'decode'
+        r = self.ui.nrb_assumptionbox.currentText()
+        q = self.ui.ab_spinbox.value()
+        t = self.ui.imp_assumptionbox.currentText()
+        v = self.ui.log_assumptionbox.currentText()
+        v = False if v == 'no' else True
+        vec_decode = self.ui.repeat_text_decode.toPlainText().strip()
+        sequence = [int(x) for x in list(vec_decode)]
+        self.run_action(sequence, int(q), action, int(r), t, v, test_mode=False, comma_mode=(q > 2))
+        self.name_of_file_to_extract = "rfc_decode_output"
+
+
+    def extract_to_file(self):
+        if self.text_to_extract_file == "" or self.name_of_file_to_extract == "":
+            self.error_msg.setText(
+                "there is no output to extract")
+            self.error_msg.exec_()
+            return
+        with open(f'{self.name_of_file_to_extract}.txt', 'w') as f:
+            f.write(self.text_to_extract_file)
 # def reconstruction_finished(self):
 #    self.label_progress.setText('We are done :)')
 #   self.progressBar.setVisible(False)
@@ -250,9 +391,11 @@ class SplashScreen(QMainWindow):
         self.ui.label_description.setText("<strong>Starting</strong>")
 
         # Change Texts
-        QtCore.QTimer.singleShot(1500, lambda: self.ui.label_description.setText("<strong>LOADING</strong> DATABASE"))
+        QtCore.QTimer.singleShot(1500, lambda: self.ui.label_description.setText(
+            "<strong>LOADING</strong> DATABASE"))
         QtCore.QTimer.singleShot(3000,
-                                 lambda: self.ui.label_description.setText("<strong>LOADING</strong> USER INTERFACE"))
+                                 lambda: self.ui.label_description.setText(
+                                     "<strong>LOADING</strong> USER INTERFACE"))
 
         ## SHOW ==> MAIN WINDOW
         ########################################################################

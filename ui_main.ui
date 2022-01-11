@@ -55,13 +55,13 @@
        </font>
       </property>
       <property name="autoFillBackground">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -446,7 +446,23 @@
          <string/>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yaakobi.wixsite.com/dnacodingsoftware/post/clustering-correcting-codes&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;click for more information about the algorithem&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yaakobi.wixsite.com/dnacodingsoftware/post/clustering-correcting-codes&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;click for more information about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="moreinforbck_5">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>520</y>
+          <width>271</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/hadasabraham/CodingTool/wiki/Clustering-Correcting-Codes-Overview&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;click for 'how to' guide about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="openExternalLinks">
          <bool>true</bool>
@@ -481,7 +497,7 @@
        <widget class="Line" name="line">
         <property name="geometry">
          <rect>
-          <x>360</x>
+          <x>370</x>
           <y>10</y>
           <width>20</width>
           <height>511</height>
@@ -514,7 +530,7 @@
        <widget class="QLabel" name="sigma_len_label">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>30</x>
           <y>100</y>
           <width>101</width>
           <height>21</height>
@@ -526,13 +542,13 @@
          </font>
         </property>
         <property name="text">
-         <string>Sigma length:</string>
+         <string>Alphabet Size:</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="sigma_len_box">
         <property name="geometry">
          <rect>
-          <x>130</x>
+          <x>140</x>
           <y>100</y>
           <width>61</width>
           <height>22</height>
@@ -545,7 +561,7 @@
        <widget class="QPushButton" name="balanced_knuth_encode_button">
         <property name="geometry">
          <rect>
-          <x>250</x>
+          <x>260</x>
           <y>280</y>
           <width>71</width>
           <height>21</height>
@@ -558,8 +574,8 @@
        <widget class="QLabel" name="output_label_knuth">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>300</y>
+          <x>30</x>
+          <y>280</y>
           <width>71</width>
           <height>41</height>
          </rect>
@@ -571,8 +587,8 @@
        <widget class="QLabel" name="len_decoded_word">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>490</y>
+          <x>30</x>
+          <y>470</y>
           <width>221</width>
           <height>31</height>
          </rect>
@@ -584,8 +600,8 @@
        <widget class="QLabel" name="len_encoded_word">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>470</y>
+          <x>30</x>
+          <y>450</y>
           <width>221</width>
           <height>31</height>
          </rect>
@@ -597,7 +613,7 @@
        <widget class="QLabel" name="sigma_len_label_2">
         <property name="geometry">
          <rect>
-          <x>410</x>
+          <x>420</x>
           <y>60</y>
           <width>101</width>
           <height>21</height>
@@ -609,13 +625,13 @@
          </font>
         </property>
         <property name="text">
-         <string>Sigma length:</string>
+         <string>Alphabet Size:</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="sigma_len_box_2">
         <property name="geometry">
          <rect>
-          <x>530</x>
+          <x>540</x>
           <y>60</y>
           <width>61</width>
           <height>22</height>
@@ -628,7 +644,7 @@
        <widget class="QLabel" name="len_encoded_word_for_dec">
         <property name="geometry">
          <rect>
-          <x>410</x>
+          <x>420</x>
           <y>90</y>
           <width>161</width>
           <height>31</height>
@@ -641,7 +657,7 @@
        <widget class="QSpinBox" name="encode_word_box">
         <property name="geometry">
          <rect>
-          <x>580</x>
+          <x>590</x>
           <y>90</y>
           <width>61</width>
           <height>22</height>
@@ -651,7 +667,7 @@
        <widget class="QPushButton" name="balanced_decode_button">
         <property name="geometry">
          <rect>
-          <x>650</x>
+          <x>660</x>
           <y>280</y>
           <width>71</width>
           <height>21</height>
@@ -664,8 +680,8 @@
        <widget class="QLabel" name="output_label_knuth_2">
         <property name="geometry">
          <rect>
-          <x>410</x>
-          <y>300</y>
+          <x>420</x>
+          <y>280</y>
           <width>71</width>
           <height>41</height>
          </rect>
@@ -677,7 +693,7 @@
        <widget class="QPlainTextEdit" name="knuth_text_encode">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>30</x>
           <y>130</y>
           <width>311</width>
           <height>131</height>
@@ -702,8 +718,8 @@
        <widget class="QPlainTextEdit" name="knuth_text_encode_2">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>340</y>
+          <x>30</x>
+          <y>320</y>
           <width>311</width>
           <height>131</height>
          </rect>
@@ -715,7 +731,7 @@
        <widget class="QPlainTextEdit" name="knuth_text_decode">
         <property name="geometry">
          <rect>
-          <x>410</x>
+          <x>420</x>
           <y>130</y>
           <width>311</width>
           <height>131</height>
@@ -737,8 +753,8 @@
        <widget class="QPlainTextEdit" name="knuth_text_decode_2">
         <property name="geometry">
          <rect>
-          <x>410</x>
-          <y>340</y>
+          <x>420</x>
+          <y>320</y>
           <width>311</width>
           <height>131</height>
          </rect>
@@ -766,7 +782,7 @@
        <widget class="QLabel" name="notebck">
         <property name="geometry">
          <rect>
-          <x>310</x>
+          <x>320</x>
           <y>100</y>
           <width>21</width>
           <height>21</height>
@@ -782,7 +798,7 @@
        <widget class="QLabel" name="notebck_2">
         <property name="geometry">
          <rect>
-          <x>700</x>
+          <x>710</x>
           <y>100</y>
           <width>21</width>
           <height>21</height>
@@ -805,10 +821,52 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yaakobi.wixsite.com/dnacodingsoftware/post/efficient-balanced-codes&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for more information about the algorithem&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yaakobi.wixsite.com/dnacodingsoftware/post/efficient-balanced-codes&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for more information about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="openExternalLinks">
          <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="moreinforbck_4">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>520</y>
+          <width>271</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/hadasabraham/CodingTool/wiki/Balanced-Codes-Knuth-Overview&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for 'how to' guide about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bck_to_file_button">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>490</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>extract to file</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bck_to_file_button_2">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>490</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>extract to file</string>
         </property>
        </widget>
       </widget>
@@ -980,7 +1038,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>330</y>
+          <y>310</y>
           <width>61</width>
           <height>41</height>
          </rect>
@@ -1039,6 +1097,9 @@
           <pointsize>10</pointsize>
          </font>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'; font-size:16px; color:#24292f; background-color:#ffffff;&quot;&gt;check the box if an insertion or deletion has occurred and set the error index in the U parameter&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::RightToLeft</enum>
         </property>
@@ -1073,6 +1134,9 @@
           <pointsize>7</pointsize>
          </font>
         </property>
+        <property name="toolTip">
+         <string>error index if occurred</string>
+        </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;U:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -1081,7 +1145,7 @@
         <property name="geometry">
          <rect>
           <x>420</x>
-          <y>330</y>
+          <y>310</y>
           <width>61</width>
           <height>41</height>
          </rect>
@@ -1141,7 +1205,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>380</y>
+          <y>350</y>
           <width>311</width>
           <height>131</height>
          </rect>
@@ -1154,7 +1218,7 @@
         <property name="geometry">
          <rect>
           <x>420</x>
-          <y>380</y>
+          <y>350</y>
           <width>311</width>
           <height>131</height>
          </rect>
@@ -1234,10 +1298,52 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yaakobi.wixsite.com/dnacodingsoftware/post/new-typography-lines-you-need-to-know&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for more information about the algorithem&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yaakobi.wixsite.com/dnacodingsoftware/post/new-typography-lines-you-need-to-know&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for more information about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="openExternalLinks">
          <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="moreinforbck_3">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>520</y>
+          <width>271</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/hadasabraham/CodingTool/wiki/Shifted-VT-Codes-Overview&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for 'how to' guide about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="SVTC_to_file_button">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>490</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>extract to file</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="SVTC_to_file_button_2">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>490</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>extract to file</string>
         </property>
        </widget>
        <zorder>groupBox</zorder>
@@ -1265,6 +1371,441 @@
        <zorder>shifted_text_decode_2</zorder>
        <zorder>infosvtc</zorder>
        <zorder>moreinforbck_2</zorder>
+       <zorder>moreinforbck_3</zorder>
+       <zorder>SVTC_to_file_button</zorder>
+       <zorder>SVTC_to_file_button_2</zorder>
+      </widget>
+      <widget class="QWidget" name="tab_7">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <attribute name="title">
+        <string>RepeatFreeCodes</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>751</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Params</string>
+        </property>
+        <widget class="QComboBox" name="nrb_assumptionbox">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>20</y>
+           <width>41</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QLabel" name="label_31">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>211</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;number of redundancy bits:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_32">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>10</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;alphabet size:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_33">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>10</y>
+           <width>131</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;implementation:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_36">
+         <property name="geometry">
+          <rect>
+           <x>650</x>
+           <y>10</y>
+           <width>31</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>when flag is on output verbosity increased and a detailed log is printed</string>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;log:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QSpinBox" name="ab_spinbox">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>30</y>
+          <width>51</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="imp_assumptionbox">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>30</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>time</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>space</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="Line" name="line_8">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>80</y>
+          <width>20</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_34">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>90</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Encode</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="repeat_text_encode">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>160</y>
+          <width>311</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="tabChangesFocus">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Enter text</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_35">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>90</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="text">
+         <string>Decode</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="repeat_text_decode">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>160</y>
+          <width>311</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="tabChangesFocus">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Enter text</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="repeat_decode_button">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>300</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Decode</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="repeat_encode_button">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>300</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Encode</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="repeat_text_encode_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>350</y>
+          <width>311</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="tabChangesFocus">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="output_label_repeat_13">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>310</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Output:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::LinksAccessibleByMouse</set>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="repeat_text_decode_2">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>350</y>
+          <width>311</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="tabChangesFocus">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="output_label_repeat_14">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>310</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Output:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::LinksAccessibleByMouse</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="infosvtc_2">
+        <property name="geometry">
+         <rect>
+          <x>750</x>
+          <y>10</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Algorithm implemented by : &lt;span style=&quot; background-color:#ffffff;&quot;&gt;Antonio Abu Nassar and Rotem Samuel&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Algorithm invented by : Ohad Elishco, Ryan Gabrys, Muriel Medard and&lt;span style=&quot; font-family:'Calibri';&quot;&gt; Eitan Yaakobi&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/info2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="log_assumptionbox">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>30</y>
+          <width>51</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>no</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>yes</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="moreinforbck_6">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>520</y>
+          <width>271</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/hadasabraham/CodingTool/wiki/Repeat-Free-Codes-Overview&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for 'how to' guide about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="moreinforbck_7">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>520</y>
+          <width>271</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yaakobi.wixsite.com/dnacodingsoftware/post/repeat-free-codes&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;click for more information about the algorithm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="repeat_to_file_button">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>490</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>extract to file</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="repeat_to_file_button_2">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>490</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>extract to file</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
