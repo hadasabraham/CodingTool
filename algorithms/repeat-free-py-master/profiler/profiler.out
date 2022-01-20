@@ -1,0 +1,40 @@
+Tue Mar 24 00:56:21 2020    profiler.out
+
+         1421142 function calls (1418143 primitive calls) in 78.195 seconds
+
+   Ordered by: cumulative time
+   List reduced from 972 to 30 due to restriction <30>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    445/1    0.001    0.000   78.195   78.195 {built-in method builtins.exec}
+        1    0.008    0.008   78.195   78.195 main.py:1(<module>)
+      512    0.004    0.000   77.901    0.152 main.py:8(run_test)
+      512    0.003    0.000   77.833    0.152 /Users/antonio/PycharmProjects/repeat-free-py/algorithm1.py:44(encode)
+      512   77.132    0.151   77.649    0.152 /Users/antonio/PycharmProjects/repeat-free-py/algorithm1.py:63(eliminate)
+    10665    0.529    0.000    0.529    0.000 {built-in method builtins.print}
+    160/2    0.001    0.000    0.262    0.131 <frozen importlib._bootstrap>:978(_find_and_load)
+    160/2    0.001    0.000    0.262    0.131 <frozen importlib._bootstrap>:948(_find_and_load_unlocked)
+    152/2    0.001    0.000    0.259    0.130 <frozen importlib._bootstrap>:663(_load_unlocked)
+    118/2    0.000    0.000    0.259    0.130 <frozen importlib._bootstrap_external>:722(exec_module)
+    231/3    0.000    0.000    0.251    0.084 <frozen importlib._bootstrap>:211(_call_with_frames_removed)
+        1    0.000    0.000    0.243    0.243 /Users/antonio/opt/miniconda3/envs/cs236781-hw/lib/python3.7/site-packages/numpy/__init__.py:106(<module>)
+   830/32    0.001    0.000    0.236    0.007 <frozen importlib._bootstrap>:1009(_handle_fromlist)
+    317/8    0.000    0.000    0.235    0.029 {built-in method builtins.__import__}
+      512    0.112    0.000    0.138    0.000 /Users/antonio/PycharmProjects/repeat-free-py/algorithm1.py:107(expand)
+      118    0.002    0.000    0.115    0.001 <frozen importlib._bootstrap_external>:793(get_code)
+        1    0.000    0.000    0.107    0.107 /Users/antonio/opt/miniconda3/envs/cs236781-hw/lib/python3.7/site-packages/numpy/core/__init__.py:7(<module>)
+      119    0.035    0.000    0.088    0.001 <frozen importlib._bootstrap_external>:914(get_data)
+        1    0.000    0.000    0.065    0.065 /Users/antonio/opt/miniconda3/envs/cs236781-hw/lib/python3.7/site-packages/numpy/lib/__init__.py:13(<module>)
+  152/149    0.000    0.000    0.063    0.000 <frozen importlib._bootstrap>:576(module_from_spec)
+    32/30    0.000    0.000    0.059    0.002 <frozen importlib._bootstrap_external>:1040(create_module)
+    32/30    0.057    0.002    0.059    0.002 {built-in method _imp.create_dynamic}
+1041830/1041650    0.059    0.000    0.059    0.000 {built-in method builtins.len}
+      119    0.052    0.000    0.052    0.000 {method 'read' of '_io.FileIO' objects}
+        1    0.000    0.000    0.047    0.047 /Users/antonio/opt/miniconda3/envs/cs236781-hw/lib/python3.7/site-packages/numpy/core/multiarray.py:7(<module>)
+        1    0.000    0.000    0.044    0.044 /Users/antonio/opt/miniconda3/envs/cs236781-hw/lib/python3.7/site-packages/numpy/core/overrides.py:1(<module>)
+        1    0.000    0.000    0.029    0.029 /Users/antonio/opt/miniconda3/envs/cs236781-hw/lib/python3.7/site-packages/numpy/random/__init__.py:124(<module>)
+      157    0.001    0.000    0.028    0.000 <frozen importlib._bootstrap>:882(_find_spec)
+        1    0.000    0.000    0.028    0.028 /Users/antonio/opt/miniconda3/envs/cs236781-hw/lib/python3.7/site-packages/numpy/random/_pickle.py:1(<module>)
+    15662    0.014    0.000    0.027    0.000 /Users/antonio/PycharmProjects/repeat-free-py/utils.py:12(b)
+
+
