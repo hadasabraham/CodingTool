@@ -32,4 +32,4 @@ or
     python3 main.py
 
 **Notice**: the project needs to be saved or run on a path **without spaces**
-# Project Hierarchy
+
