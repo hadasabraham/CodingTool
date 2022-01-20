@@ -1,3 +1,0 @@
-C:/Users/Hadas/Desktop/DNA_gui/algorithems/clustering-correcting-codes-master/cmake-build-debug/CMakeFiles/clustering_correcting_codes_project.dir
-C:/Users/Hadas/Desktop/DNA_gui/algorithems/clustering-correcting-codes-master/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Hadas/Desktop/DNA_gui/algorithems/clustering-correcting-codes-master/cmake-build-debug/CMakeFiles/rebuild_cache.dir
