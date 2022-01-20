@@ -3,6 +3,7 @@ import sys
 import platform
 from math import ceil, log2, log
 from typing import List
+from random import choice
 
 from PyQt5.QtWidgets import QMessageBox
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -15,18 +16,30 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFo
 from PySide2.QtWidgets import *
 
 ## ==> SPLASH SCREEN
-from algorithems.decoder import Decoder
-from algorithems.encoder import Encoder
+from algorithms.decoder import Decoder
+from algorithms.encoder import Encoder
 from ui_splash_screen import Ui_SplashScreen
 
 ## ==> MAIN WINDOW
 from ui_main import Ui_MainWindow
-from algorithems.knuth import (encode_knuth, decode_knuth)
-from algorithems.ShiftedVTCode import (ShiftedVTCode)
+from algorithms.knuth import (encode_knuth, decode_knuth)
+from algorithms.ShiftedVTCode import (ShiftedVTCode)
 
 ## ==> GLOBALS
 counter = 0
 
+def generate_test(output_file, strand_num, strand_len):
+    file = open(output_file, 'w')
+    for i in range(0, strand_num):
+        strand = ''.join(choice('01') for _ in range(strand_len))
+        file.write(strand)
+        file.write('\n')
+
+def is_binary_or_newline(string):
+    for letter in string:
+        if letter != '0' and letter != '1' and letter != '\n':
+            return False
+    return True
 
 # YOUR APPLICATION
 class MainWindow(QMainWindow):
@@ -39,6 +52,7 @@ class MainWindow(QMainWindow):
         # set the title
         self.setWindowTitle('The Ultimate Coding Tool')
         self.error_msg = QMessageBox()
+        self.run_msg = QMessageBox()
         self.error_msg.setIcon(QMessageBox.Critical)
         self.error_msg.setWindowTitle('Error')
         self.ui.shifted_text_encode.clear()
@@ -48,8 +62,11 @@ class MainWindow(QMainWindow):
         self.ui.repeat_text_encode.clear()
         self.ui.repeat_text_decode.clear()
         # connect push buttons to an event
-        self.ui.browse_button.clicked.connect(self.openFileDialog)
-        self.ui.encode_button.clicked.connect(self.input_validation_CCC)
+        self.ui.browse_gen_output_button.clicked.connect(self.openFileDialogGenOut)
+        self.ui.generate_button.clicked.connect(self.run_generator)
+        self.ui.browse_input_button.clicked.connect(self.openFileDialogIn)
+        self.ui.browse_output_button.clicked.connect(self.openFileDialogOut)
+        self.ui.run_button.clicked.connect(self.input_validation_CCC)
         self.ui.balanced_knuth_encode_button.clicked.connect(self.input_validation_encode_BCK)
         self.ui.balanced_decode_button.clicked.connect(self.input_validation_decode_BCK)
         self.ui.shifted_encode_button.clicked.connect(self.input_validation_encode_SVTC)
@@ -72,54 +89,120 @@ class MainWindow(QMainWindow):
         self.ui.repeat_to_file_button_2.clicked.connect(
             self.extract_to_file)
 
-    def input_validation_CCC(self):
-        raw = self.ui.raw_box.value()
-        tao = self.ui.tao_box.value()
-        strands_data_len = self.ui.strands_box.value()
-        # do i need to cast to str??
-        assumption = self.ui.assumption_box.currentText()
-        b_force = self.ui.b_force_box.currentText()
-        b_force_real = 'true' if b_force == 'Yes' else 'false'
-        test_path = self.ui.browse_line_edit.text()
-        if test_path == "":
-            self.error_msg.setText(
-                "please insert input for the algorithm")
+    def run_generator(self):
+        output_file = self.ui.browse_gen_output_line_edit.text()
+        output_dir = os.path.dirname(output_file)
+        if not os.path.isdir(output_dir):
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Output file path doesn't exist")
+            self.error_msg.setWindowTitle("Output Error")
             self.error_msg.exec_()
             return
-        process_path = "algorithems/clustering-correcting-codes-master/main.exe"
+        strand_num = self.ui.strand_num_box.value()
+        strand_len = self.ui.strand_len_box.value()
+
+        self.run_msg.setStandardButtons(QMessageBox.NoButton)
+        self.run_msg.setText("Running...Please wait")
+        self.run_msg.setStyleSheet("QLabel{min-width: 150px;}")
+        self.run_msg.setWindowTitle("Execution")
+        self.run_msg.show()
+        QApplication.processEvents()
+        generate_test(output_file, strand_num, strand_len)
+        self.run_msg.setStandardButtons(QMessageBox.Ok)
+        self.run_msg.setText("Done!")
+        self.run_msg.show()
+
+    def input_validation_CCC(self):
+        raw = self.ui.rho_box.value()
+        tao = self.ui.tao_box.value()
+        strands_data_len = self.ui.strands_box.value()
+        b_force = self.ui.b_force_box.currentText()
+        input_file = self.ui.browse_input_line_edit.text()
+        output_file = self.ui.browse_output_line_edit.text()
+
+        # file validation
+        # input file
+        if not os.path.isfile(input_file):
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Input file not found")
+            self.error_msg.setWindowTitle("Input Error")
+            self.error_msg.exec_()
+            return
+        # output file
+        output_dir = os.path.dirname(output_file)
+        if not os.path.isdir(output_dir):
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Output file path doesn't exist")
+            self.error_msg.setWindowTitle("Output Error")
+            self.error_msg.exec_()
+            return
+
+        # raw, tao, strands length > 0
+
         e = -1
         t = raw * 4 + 1
-        with open(r"results_before_encoding.txt", 'r') as fp:
+        len_error = False
+        bin_error = False
+        with open(input_file, 'r') as fp:
             for count, line in enumerate(fp):
-                pass
+                # print(line)
+                # print("\n")
+                # print(count)
+                if not is_binary_or_newline(line):
+                    bin_error = True
+                    break
+                if len(line) != strands_data_len + 1:
+                    len_error = True
+                    break
+
+        fp.close()
+        if len_error:
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Strand length in input file differs from given length")
+            self.error_msg.setWindowTitle("Invalid input file")
+            self.error_msg.exec_()
+            return
+
+        if bin_error:
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Input file is not binary")
+            self.error_msg.setWindowTitle("Invalid input file")
+            self.error_msg.exec_()
+            return
+        # print(f'count {count}')
+        # #print(f'count {log2(count)}')
+        # count = 1 if count==0 else count
         index_length = ceil(log2(count))
         delta_2_size = ceil(log2(strands_data_len)) * (t - 1)
         for i in range(2 * tao, tao - 1, -1):
             delta_1_size = ceil(log2(index_length)) * i
-            if b_force_real == 'true':
+            if b_force == 'true':
                 if strands_data_len < index_length + 1 + delta_1_size + delta_2_size + 3 * t + 2 * delta_1_size:
                     pass
                 else:
                     e = i
                     break
             else:
-                if strands_data_len < index_length + 1 + delta_1_size + delta_2_size + t * ceil(
-                        log2(count)):
+                if strands_data_len < index_length + 1 + delta_1_size + delta_2_size + t * ceil(log2(count)):
                     pass
                 else:
                     e = i
                     break
-        self.inputDNAPath = self.ui.browse_line_edit.text()
-        if not os.path.isfile(self.inputDNAPath):
-            self.error_msg.setText("The input file you chosen doesn't exist")
+
+        if e == -1:
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Strand length doesn't hold the algorithm constraints")
+            self.error_msg.setWindowTitle("Invalid parameters")
             self.error_msg.exec_()
-            self.ui.browse_line_edit.clear()
-        elif e == -1:
-            self.error_msg.setText(
-                "the given strands data length is not holding the encoding constraints")
-            self.error_msg.exec_()
-        else:
-            self.runCCCencode()
+            return
+
+        self.runCCCencode()
 
     def input_validation_encode_BCK(self):
         vec_orig = self.ui.knuth_text_encode.toPlainText().strip()
@@ -213,6 +296,18 @@ class MainWindow(QMainWindow):
                                                            filter="*.txt")
         self.ui.browse_line_edit.setText(self.inputDNAPath)
 
+    def openFileDialogIn(self):
+        self.inputDNAPath, _ = QFileDialog.getOpenFileName(self, "Select an input file", './', filter="*.txt")
+        self.ui.browse_input_line_edit.setText(self.inputDNAPath)
+
+    def openFileDialogOut(self):
+        self.inputDNAPath, _ = QFileDialog.getSaveFileName(self, "Select an output file", './', filter="*.txt")
+        self.ui.browse_output_line_edit.setText(self.inputDNAPath)
+
+    def openFileDialogGenOut(self):
+        self.inputDNAPath, _ = QFileDialog.getSaveFileName(self, "Select an output file", './', filter="*.txt")
+        self.ui.browse_gen_output_line_edit.setText(self.inputDNAPath)
+
     def runBCKencode(self):
         vec_orig = self.ui.knuth_text_encode.toPlainText().strip()
         sigma_len = self.ui.sigma_len_box.value()
@@ -272,19 +367,54 @@ class MainWindow(QMainWindow):
         self.ui.shifted_text_decode_2.setPlainText(''.join(lst_word_encode))
 
     def runCCCencode(self):
-        raw = self.ui.raw_box.value()
+        raw = self.ui.rho_box.value()
         tao = self.ui.tao_box.value()
         strands_data_len = self.ui.strands_box.value()
-        # do i need to cast to str??
-        assumption = self.ui.assumption_box.currentText()
         b_force = self.ui.b_force_box.currentText()
-        b_force_real = 'true' if b_force == 'Yes' else 'false'
-        test_path = self.ui.browse_line_edit.text()
-        process_path = "algorithems/clustering-correcting-codes-master/main.exe"
-        arguments = [str(raw), str(tao), str(strands_data_len), assumption, b_force_real, test_path]
+
+        if self.ui.encode_decode_box.currentText() == "Encode":
+            encode_decode = "E"
+        else:
+            encode_decode = "D"
+
+        input_path = self.ui.browse_input_line_edit.text()
+        output_path = self.ui.browse_output_line_edit.text()
+        process_path = "algorithms/clustering-correcting-codes-master/CCC.exe"
+        if not os.path.isfile(process_path):
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Executable doesn't exist!")
+            self.error_msg.setInformativeText("Place CCC.exe in algoritehms/clustering-correcting-codes-master/")
+            self.error_msg.setWindowTitle("Executable Error")
+            self.error_msg.exec_()
+            return
+        arguments = [encode_decode, str(raw), str(tao), str(strands_data_len), b_force, input_path, output_path]
+
         self.process = QProcess()
         self.process.setWorkingDirectory('.')
         self.process.start(process_path, arguments)
+
+        started = self.process.waitForStarted(-1)
+        if not started:
+            self.error_msg = QMessageBox()
+            self.error_msg.setIcon(QMessageBox.Critical)
+            self.error_msg.setText("Encoder/Decoder process couldn't be started")
+            self.error_msg.setWindowTitle("Execution error")
+            self.error_msg.exec_()
+            return
+
+        self.run_msg = QMessageBox()
+        self.run_msg.setIcon(QMessageBox.NoIcon)
+        self.run_msg.setStandardButtons(QMessageBox.NoButton)
+        self.run_msg.setStyleSheet("QLabel{min-width: 150px;}")
+        self.run_msg.setWindowTitle("Progress")
+        self.run_msg.setText("Running...Please wait")
+        self.run_msg.show()
+        QApplication.processEvents()
+
+        self.process.waitForFinished(-1)
+        self.run_msg.setText("Done!")
+        self.run_msg.setStandardButtons(QMessageBox.Ok)
 
 
     def run_action(self, w: List, q, action, redundancy, complexity_mode, verbose_mode,

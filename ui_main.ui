@@ -61,7 +61,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -81,11 +81,11 @@
        <attribute name="title">
         <string>Clustering-correcting-codes</string>
        </attribute>
-       <widget class="QLabel" name="raw">
+       <widget class="QLabel" name="rho">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>20</y>
+          <y>240</y>
           <width>64</width>
           <height>18</height>
          </rect>
@@ -108,14 +108,14 @@
          <number>-1</number>
         </property>
         <property name="text">
-         <string>Raw</string>
+         <string>Rho</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="browse_button">
+       <widget class="QPushButton" name="browse_input_button">
         <property name="geometry">
          <rect>
           <x>450</x>
-          <y>240</y>
+          <y>440</y>
           <width>81</width>
           <height>21</height>
          </rect>
@@ -135,11 +135,11 @@
          <string>Browse</string>
         </property>
        </widget>
-       <widget class="QSpinBox" name="raw_box">
+       <widget class="QSpinBox" name="rho_box">
         <property name="geometry">
          <rect>
           <x>200</x>
-          <y>20</y>
+          <y>240</y>
           <width>91</width>
           <height>22</height>
          </rect>
@@ -149,13 +149,19 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10000</number>
         </property>
        </widget>
        <widget class="QSpinBox" name="tao_box">
         <property name="geometry">
          <rect>
           <x>200</x>
-          <y>60</y>
+          <y>280</y>
           <width>91</width>
           <height>22</height>
          </rect>
@@ -166,12 +172,18 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10000</number>
+        </property>
        </widget>
        <widget class="QLabel" name="tao">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>60</y>
+          <y>280</y>
           <width>64</width>
           <height>18</height>
          </rect>
@@ -198,7 +210,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>100</y>
+          <y>320</y>
           <width>131</width>
           <height>18</height>
          </rect>
@@ -225,7 +237,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>180</y>
+          <y>360</y>
           <width>101</width>
           <height>18</height>
          </rect>
@@ -245,41 +257,14 @@
          <string>denoting wether we're using brute force manner in the encoding algorithim</string>
         </property>
         <property name="text">
-         <string>Is brute force</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="assumption">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>140</y>
-          <width>81</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string>'M' for majority or 'D' for dominance</string>
-        </property>
-        <property name="text">
-         <string>Assumption</string>
+         <string>Brute force</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="strands_box">
         <property name="geometry">
          <rect>
           <x>200</x>
-          <y>100</y>
+          <y>320</y>
           <width>91</width>
           <height>22</height>
          </rect>
@@ -290,41 +275,18 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
         <property name="maximum">
-         <number>1000</number>
+         <number>10000</number>
         </property>
-       </widget>
-       <widget class="QComboBox" name="assumption_box">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>140</y>
-          <width>111</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <item>
-         <property name="text">
-          <string>M</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>D</string>
-         </property>
-        </item>
        </widget>
        <widget class="QComboBox" name="b_force_box">
         <property name="geometry">
          <rect>
           <x>200</x>
-          <y>180</y>
+          <y>360</y>
           <width>111</width>
           <height>22</height>
          </rect>
@@ -337,12 +299,12 @@
         </property>
         <item>
          <property name="text">
-          <string>No</string>
+          <string>false</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Yes</string>
+          <string>true</string>
          </property>
         </item>
        </widget>
@@ -350,7 +312,7 @@
         <property name="geometry">
          <rect>
           <x>29</x>
-          <y>239</y>
+          <y>439</y>
           <width>101</width>
           <height>18</height>
          </rect>
@@ -373,11 +335,11 @@
          <string>Input File</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="encode_button">
+       <widget class="QPushButton" name="run_button">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>320</y>
+          <x>610</x>
+          <y>460</y>
           <width>81</width>
           <height>31</height>
          </rect>
@@ -388,14 +350,14 @@
          </font>
         </property>
         <property name="text">
-         <string>Encode</string>
+         <string>Run</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="browse_line_edit">
+       <widget class="QLineEdit" name="browse_input_line_edit">
         <property name="geometry">
          <rect>
           <x>200</x>
-          <y>239</y>
+          <y>439</y>
           <width>231</width>
           <height>21</height>
          </rect>
@@ -415,22 +377,6 @@
         </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/info2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>240</y>
-          <width>21</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="toolTip">
-         <string>the name should be test_file_updated.txt</string>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/note4.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QLabel" name="moreinfoccc">
@@ -466,6 +412,339 @@
         </property>
         <property name="openExternalLinks">
          <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="browse_output_line_edit">
+        <property name="geometry">
+         <rect>
+          <x>201</x>
+          <y>470</y>
+          <width>231</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="browse_output_button">
+        <property name="geometry">
+         <rect>
+          <x>451</x>
+          <y>471</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="test_output_file">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>470</y>
+          <width>101</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="text">
+         <string>output File</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="encode_decode">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>399</y>
+          <width>101</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Choose encoder or decoder</string>
+        </property>
+        <property name="text">
+         <string>Encode/Decode</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="encode_decode_box">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>399</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>Encode</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Decode</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="ccc_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>190</y>
+          <width>211</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Applies CCC Algorithm to encode or decode</string>
+        </property>
+        <property name="text">
+         <string>CCC Encoder/Decoder</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="generator_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Generates random binary strands</string>
+        </property>
+        <property name="text">
+         <string>Random Strands Generator</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="gen_output_file">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>150</y>
+          <width>101</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="text">
+         <string>output File</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="browse_gen_output_line_edit">
+        <property name="geometry">
+         <rect>
+          <x>201</x>
+          <y>150</y>
+          <width>231</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="browse_gen_output_button">
+        <property name="geometry">
+         <rect>
+          <x>451</x>
+          <y>151</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="generate_button">
+        <property name="geometry">
+         <rect>
+          <x>610</x>
+          <y>140</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Generate</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="strand_len">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>131</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Length of strands to generate</string>
+        </property>
+        <property name="text">
+         <string>Strands data length</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="strand_num">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>70</y>
+          <width>64</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Number of strands to generate</string>
+        </property>
+        <property name="text">
+         <string>Strand No.</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="strand_num_box">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>70</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10000</number>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="strand_len_box">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>110</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10000</number>
         </property>
        </widget>
       </widget>
@@ -1814,13 +2093,12 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>raw_box</tabstop>
+  <tabstop>rho_box</tabstop>
   <tabstop>tao_box</tabstop>
   <tabstop>strands_box</tabstop>
-  <tabstop>assumption_box</tabstop>
   <tabstop>b_force_box</tabstop>
-  <tabstop>browse_button</tabstop>
-  <tabstop>encode_button</tabstop>
+  <tabstop>browse_input_button</tabstop>
+  <tabstop>run_button</tabstop>
   <tabstop>sigma_len_box</tabstop>
   <tabstop>knuth_text_encode</tabstop>
   <tabstop>balanced_knuth_encode_button</tabstop>
@@ -1834,7 +2112,7 @@
   <tabstop>shifted_decode_button</tabstop>
   <tabstop>checkBox</tabstop>
   <tabstop>u_spin_box</tabstop>
-  <tabstop>browse_line_edit</tabstop>
+  <tabstop>browse_input_line_edit</tabstop>
   <tabstop>p_spin_box</tabstop>
   <tabstop>knuth_text_encode_2</tabstop>
   <tabstop>d_spin_box</tabstop>
